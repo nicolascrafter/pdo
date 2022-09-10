@@ -1,17 +1,4 @@
 <?php
-    function load_tareas($id = NULL) {
-        $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
-        if($id == NULL) {
-            $sentencia = $db -> prepare("SELECT * FROM tareas");
-            $sentencia -> execute();
-            return $sentencia -> fetchAll(PDO::FETCH_OBJ);
-        }
-        $sentencia = $db -> prepare("SELECT * FROM tareas WHERE id=?");
-        $sentencia -> execute([$id]);
-        return $sentencia -> fetch(PDO::FETCH_OBJ);
-        // var_dump($sentencia);
-    }
-
     function getUsuariosDB($dni = NULL) {
         $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
         if($dni == NULL) {
