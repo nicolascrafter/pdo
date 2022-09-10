@@ -25,10 +25,33 @@
         // var_dump($sentencia);
     }
 
+    function postUsuariosDB($dni, $nombre) {
+        $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
+        $sentencia = $db -> prepare("INSERT INTO usuarios(dni, nombre) VALUES (?,?)");
+        $sentencia -> execute([$dni, $nombre]);
+    }
+
     function getUsuarios($dni = NULL) {
         echo var_dump(getUsuariosDB($dni));
     }
 
+    function postUsuarios() {
+        // var_dump($_POST);
+        if (isset($_POST["dni"]) && isset($_POST["nombre"])) {
+            if (!empty($_POST["dni"]) && !empty($_POST["nombre"])) {
+                $dni = intval($_POST["dni"]);
+                $nombre = $_POST["nombre"];
+                postUsuariosDB($dni, $nombre);
+                echo "formulario exitoso";
+            }
+        }
+        echo "El formulario no es valido";
+        // postUsuariosDB(44418075, "Mateo");
+    }
+
+    function showForm() {
+        require "template.php";
+    }
     // echo var_dump(getUsuarios());
     // echo "<br><br>";
     // echo var_dump(getUsuarios(38106534));

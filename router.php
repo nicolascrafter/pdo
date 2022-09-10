@@ -7,7 +7,7 @@ require_once "index.php";
 if (!empty($_GET['action'])) {
     $accion = $_GET['action'];
 } else {
-    $accion = 'noticias';
+    $accion = 'usuarios';
 }
 
 // parseo el string de action por "/" y me devuelve el arreglo
@@ -21,6 +21,12 @@ switch ($params[0]) {
         } else {
             getUsuarios($params[1]);
         }
+        break;
+    case 'addUsuarios':
+        postUsuarios();
+        break;
+    case 'formUsuario':
+        showForm();
         break;
     default:
         echo ('404 page not found');
