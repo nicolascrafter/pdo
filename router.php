@@ -19,8 +19,17 @@ switch ($params[0]) {
         if (empty($params[1])) {
             getUsuarios();
         } else {
-            getUsuarios($params[1]);
+            if ($params[1] == 'delete') {
+                if (empty($params[2])) {
+                    echo "no se puede elminar: no hay ID";
+                } else {
+                    deleteUsuarios($params[2]);
+                }
+            } else {
+                getUsuarios($params[1]);
+            }
         }
+         
         break;
     case 'addUsuarios':
         postUsuarios();

@@ -19,6 +19,11 @@
         // postUsuariosDB(44418075, "Mateo");
     }
 
+    function deleteUsuarios($id) {
+        deleteUsuariosDB($id);
+        echo "Se borro el usuario con id ".$id;
+    }
+
     function showForm() {
         require_once "template.php";
     }
